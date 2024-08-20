@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chart.js Example</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="chart1-tab" data-bs-toggle="tab" data-bs-target="#chart1" type="button" role="tab" aria-controls="chart1" aria-selected="true">Chart 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="chart2-tab" data-bs-toggle="tab" data-bs-target="#chart2" type="button" role="tab" aria-controls="chart2" aria-selected="false">Chart 2</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="chart1" role="tabpanel" aria-labelledby="chart1-tab">
+            <canvas id="myChart1" width="400" height="400"></canvas>
+        </div>
+        <div class="tab-pane fade" id="chart2" role="tabpanel" aria-labelledby="chart2-tab">
+            <canvas id="myChart2" width="400" height="400"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+  
+    var chartData1 = [12, 19, 3, 5, 2, 3];
+    var chartData2 = [35, 30, 30, 30, 30, 35];
+
+    
+
+  
+    // Verileri güncelleme fonksiyonu
+
+    // Tab değişimlerinde verileri güncelleme
+    var chart1Tab = document.getElementById('chart1-tab');
+    var chart2Tab = document.getElementById('chart2-tab');
+    
+    
+    chart1Tab.addEventListener('click', function() {
+        var myChart = Chart.getChart("myChart1");
+        if (myChart){
+        myChart.destroy();
+         }
+
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+        var myChart1 = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: chartData1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    });
+    
+    
+    chart2Tab.addEventListener('click', function() {
+        var myChart = Chart.getChart("myChart1");
+        if (myChart){   
+        myChart.destroy();
+         }
+        var ctx2 = document.getElementById('myChart1').getContext('2d');
+       var myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'red', 'red', 'red', 'red', 'red'],
+            datasets: [{
+                label: '# of Votes',
+                data: chartData2,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+    });
+</script>
+
+</body>
+</html>
